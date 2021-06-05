@@ -1,0 +1,26 @@
+{
+  "name": "merng",
+  "version": "1.0.0",
+  "description": "MERNG stack project ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Samiul-Hossain/merng.git"
+  },
+  "keywords": [
+    "mongodb",
+    "express.js",
+    "react.js",
+    "node.js",
+    "graphql"
+  ],
+  "author": "samiul",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Samiul-Hossain/merng/issues"
+  },
+  "homepage": "https://github.com/Samiul-Hossain/merng#readme"
+}
