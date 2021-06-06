@@ -4,7 +4,9 @@
   "description": "MERNG stack project ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "dev": "nodemon index"
   },
   "repository": {
     "type": "git",
@@ -22,5 +24,16 @@
   "bugs": {
     "url": "https://github.com/Samiul-Hossain/merng/issues"
   },
-  "homepage": "https://github.com/Samiul-Hossain/merng#readme"
+  "homepage": "https://github.com/Samiul-Hossain/merng#readme",
+  "dependencies": {
+    "apollo-server": "^2.25.0",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "graphql": "^15.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.13"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
