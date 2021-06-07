@@ -1,5 +1,4 @@
 const { AuthenticationError, UserInputError } = require("apollo-server");
-const { argsToArgsConfig } = require("graphql/type/definition");
 
 const Post = require("../../models/Post");
 const checkAuth = require("../../util/check-auth");
@@ -28,19 +27,21 @@ module.exports = {
     },
   },
   Mutation: {
-    async createPost(_, { body }, context) {
+    async createPost(_, { body, image }, context) {
       const user = checkAuth(context);
 
-      if(args.body.trim()===''){
-        throw new Error('Post body must not be empty');
+      if (body.trim() === "") {
+        throw new Error("Post body must not be empty");
       }
 
       const newPost = new Post({
         body,
+        image,
         user: user.id,
         username: user.username,
         createdAt: new Date().toISOString(),
       });
+
       const post = await newPost.save();
 
       context.pubsub.publish("NEW_POST", {
@@ -64,17 +65,16 @@ module.exports = {
         throw new Error(err);
       }
     },
-    likePost: async (_, { postId }, context) => {
+    async likePost(_, { postId }, context) {
       const { username } = checkAuth(context);
 
       const post = await Post.findById(postId);
       if (post) {
         if (post.likes.find((like) => like.username === username)) {
-          //Post already liked, unlike it
+          // Post already likes, unlike it
           post.likes = post.likes.filter((like) => like.username !== username);
-          await post.save();
         } else {
-          //not liked, so like it
+          // Not liked, like post
           post.likes.push({
             username,
             createdAt: new Date().toISOString(),
@@ -83,7 +83,7 @@ module.exports = {
 
         await post.save();
         return post;
-      } else throw new UserInputError("post not found");
+      } else throw new UserInputError("Post not found");
     },
   },
   Subscription: {
