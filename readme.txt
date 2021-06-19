@@ -28,7 +28,8 @@
  -Like and Unlike Posts 
 
 ### Deployment
-Server live on https://guarded-inlet-41054.herokuapp.com/ //Can use postman to get queries
 To deploy on your system:
  -node index.js //root directory
  -npm start //client directory
+
+Hosted at https://memeverse-823a7.web.app/
